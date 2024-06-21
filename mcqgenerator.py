@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 import traceback
-from mcqgen.utils import  
+
 
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
