@@ -8,7 +8,7 @@ from src.mcqgen.utils import read_file, get_table_data
 from src.mcqgen.logger import logging
 
 #importing required libraries for longchain
-from langchain.llms import OpenAI
+from langchain.llms import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.callbacks import get_openai_callback
@@ -24,7 +24,7 @@ key=os.getenv("OPENAI_API_KEY")
 llm=ChatOpenAI(openai_api_key=key, model_name='gpt-3.5-turbo', temperature=0.5) #from 0-2 you can mention values of temprature
 
 #define the prompt template imput vairable and template 
-Ttemplate="""
+template="""
 Text:{text}
 You are an expert mcq maker. Given the above text , it is your job to \
 create a quiz of {number} multiple choice question for {subject} student in {tone} tone.
@@ -33,7 +33,7 @@ Make sure to format your response like RESPONSE_JSON below and use it as a guide
 Ensure to make {number} MCQs
 ## RESPONSE_JSON
 {response_json}"""
-## tone will decide the difficulty level
+# tone will decide the difficulty level
 
 quize_generation_prompt = PromptTemplate(
     input_variable=['text','number','subject','tone','response_json'],
