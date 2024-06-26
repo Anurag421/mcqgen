@@ -8,7 +8,7 @@ from src.mcqgen.utils import read_file, get_table_data
 from src.mcqgen.logger import logging
 
 #importing required libraries for longchain
-from langchain.llms import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.callbacks import get_openai_callback
