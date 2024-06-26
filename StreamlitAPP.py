@@ -58,7 +58,7 @@ with st.form('user_inputs'):
             except Exception as e:
                 traceback.print_exception(type(e), e, e.__traceback__)
                 st.error("Errors")
-                       
+                     
             else:
                 print(f"Total tokens :{cb.total_token}")
                 print(f"Prompt token :{cb.prompt_token}")
@@ -78,4 +78,4 @@ with st.form('user_inputs'):
                         else:
                             st.error("Error in the table data")
                 else:
-                        st.write(response)
+                    st.write(response)
