@@ -13,7 +13,7 @@ from langchain.callbacks import get_openai_callback
 from src.mcqgen.mcqgenerator import generate_evaluate_chain
 
 # loading json file
-with open('E:\\mcqgen\\response.json', 'r') as file:
+with open('response.json', 'r') as file:
     RESPONSE_JSON = json.load(file)
 
 # creating title for the app
@@ -60,22 +60,24 @@ with st.form('user_inputs'):
                 st.error("Errors")
                      
             else:
-                print(f"Total tokens :{cb.total_token}")
-                print(f"Prompt token :{cb.prompt_token}")
-                print(f"Completion Tokens : {cb.completion_tokens}")
-                print(f"Total Cost : {cb.total_cost}")
+                print(f"Total Tokens:{cb.total_tokens}")
+                print(f"Prompt Tokens:{cb.prompt_tokens}")
+                print(f"Completion Tokens:{cb.completion_tokens}")
+                print(f"Total Cost:{cb.total_cost}")
                 if isinstance(response, dict):
-                    # Extract the quiz data from the response
-                    quiz = response.get("quiz", None)
+                    #Extract the quiz data from the response
+                    quiz=response.get("quiz", None)
                     if quiz is not None:
-                        table_data = get_table_data(quiz)
+                        table_data=get_table_data(quiz)
                         if table_data is not None:
-                            df = pd.DataFrame(table_data)
-                            df.index = df.index+1
+                            df=pd.DataFrame(table_data)
+                            df.index=df.index+1
                             st.table(df)
-                            st.text_area(label="Review",
-                                         value=response["review"])
+                            #Display the review in atext box as well
+                            st.text_area(label="Review", value=response["review"])
                         else:
                             st.error("Error in the table data")
+
                 else:
                     st.write(response)
+

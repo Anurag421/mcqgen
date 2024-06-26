@@ -31,15 +31,11 @@ def get_table_data(quiz_str):
         for key, value in quiz_dict.items():
             mcq = value["mcq"]
             options = " || ".join(
-                [
-                    f"{option}->{option_value}" for option, option_value in value ["option"].items()
-
-                ]
+                [f"{option}->{option_value}" for option, option_value in value["option"].items()]
             )
-
             correct = value["correct"]
-            quiz_table_data.append({"mcq":mcq}, {"choices":options}, {"correct":correct})
+            quiz_table_data.append({"mcq": mcq, "choices": options, "correct": correct})
         return quiz_table_data
     except Exception as e:
         traceback.print_exception(type(e), e, e.__traceback__)
-    return False
+        return False

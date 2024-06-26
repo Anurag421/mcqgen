@@ -24,7 +24,7 @@ key=os.getenv("OPENAI_API_KEY")
 llm=ChatOpenAI(openai_api_key=key, model_name='gpt-3.5-turbo', temperature=0.5) #from 0-2 you can mention values of temprature
 
 #define the prompt template imput vairable and template 
-template="""
+template = """
 Text:{text}
 You are an expert mcq maker. Given the above text , it is your job to \
 create a quiz of {number} multiple choice question for {subject} student in {tone} tone.
@@ -55,7 +55,7 @@ Check from an expert English Writer of the above quiz:
 quiz_evaluate_prompt=PromptTemplate(input_variable=['subject','quiz'],template=template2)
 #Creating a new template and chreating a chain for this chain
 
-review_chain=LLMChain(llm=llm,prompt=quiz_evaluate_prompt,output_key='review',verbose=True)
+review_chain = LLMChain(llm=llm, prompt=quiz_evaluate_prompt, output_key='review', verbose=True)
 #creating the review chain
 #now connect both the chains- quiz chain and review chain
 
